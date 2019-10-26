@@ -7,86 +7,47 @@ var tbody = d3.select("tbody");
 
 button.on("click", function () {
     tbody.html("");
+    var filteredData = tableData;
 
     //Date code
     var inputDate = d3.select("#datetime");
     var inputValueDate = inputDate.property("value");
+    if (inputValueDate) {
+        filteredData = filteredData.filter(tableData => tableData.datetime === inputValueDate)
+    };
 
-    var filteredDate = tableData.filter(tableData => tableData.datetime === inputValueDate);
-
-    tbody = d3.select("tbody");
-
-    filteredDate.forEach(function (UFOReport) {
-        var row = tbody.append("tr");
-        Object.entries(UFOReport).forEach(function ([key, value]) {
-            console.log(key,value);
-            var cell = row.append("td");
-            cell.text(value);
-        });
-    });
     //City code
     var inputCity = d3.select("#city");
     var inputValueCity = inputCity.property("value");
-
-    var filteredCity = tableData.filter(tableData => tableData.city === inputValueCity);
-
-    tbody = d3.select("tbody");
-
-    filteredCity.forEach(function (UFOReport) {
-        var row = tbody.append("tr");
-        Object.entries(UFOReport).forEach(function ([key, value]) {
-            console.log(key,value);
-            var cell = row.append("td");
-            cell.text(value);
-        });
-    });
-
-    //State code
+    if (inputValueCity) {
+        filteredData = filteredData.filter(tableData => tableData.city === inputValueCity)
+    };
+ 
+     //State code
     var inputState = d3.select("#state");
     var inputValueState = inputState.property("value");
-
-    var filteredState = tableData.filter(tableData => tableData.state === inputValueState);
-
-    tbody = d3.select("tbody");
-
-    filteredState.forEach(function (UFOReport) {
-        var row = tbody.append("tr");
-        Object.entries(UFOReport).forEach(function ([key, value]) {
-            console.log(key,value);
-            var cell = row.append("td");
-            cell.text(value);
-        });
-    });
-
+    if (inputValueState) {
+        filteredData = filteredData.filter(tableData => tableData.state === inputValueState)
+    };
+ 
     //Country code
     var inputCountry = d3.select("#country");
     var inputValueCountry = inputCountry.property("value");
-
-    var filteredCountry = tableData.filter(tableData => tableData.country === inputValueCountry);
-
-    tbody = d3.select("tbody");
-
-    filteredCountry.forEach(function (UFOReport) {
-        var row = tbody.append("tr");
-        Object.entries(UFOReport).forEach(function ([key, value]) {
-            console.log(key,value);
-            var cell = row.append("td");
-            cell.text(value);
-        });
-    });
+    if (inputValueCountry) {
+        filteredData = filteredData.filter(tableData => tableData.country === inputValueCountry)
+    };
 
     //Shape code
     var inputShape = d3.select("#shape");
     var inputValueShape = inputShape.property("value");
+    if (inputValueShape) {
+        filteredData = filteredData.filter(tableData => tableData.shape === inputValueShape)
+    };
 
-    var filteredShape = tableData.filter(tableData => tableData.shape === inputValueShape);
-
-    tbody = d3.select("tbody");
-
-    filteredShape.forEach(function (UFOReport) {
+    filteredData.forEach(function (UFOReport) {
         var row = tbody.append("tr");
         Object.entries(UFOReport).forEach(function ([key, value]) {
-            console.log(key,value);
+            console.log(key, value);
             var cell = row.append("td");
             cell.text(value);
         });
