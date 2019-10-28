@@ -5,6 +5,15 @@ var tableData = data;
 var button = d3.select("#filter-btn");
 var tbody = d3.select("tbody");
 
+tableData.forEach(function (UFOs) {
+    var row = tbody.append("tr");
+    Object.entries(UFOs).forEach(function ([key, value]) {
+        console.log(key, value);
+        var cell = row.append("td");
+        cell.text(value);
+    });
+});
+
 button.on("click", function () {
     tbody.html("");
     var filteredData = tableData;
